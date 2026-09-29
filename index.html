@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Scientific Calculator</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="calculator">
+
+        <!-- HEADER -->
+        <header class="header">
+
+            <div>
+                <span class="project">PROJECT</span>
+                <h1>Scientific Calculator</h1>
+            </div>
+
+            <div class="status">
+                <span></span>
+                Ready
+            </div>
+
+        </header>
+
+
+        <!-- DISPLAY -->
+        <section class="display-box">
+
+            <div id="expression"></div>
+
+            <div id="display">0</div>
+
+        </section>
+
+
+        <!-- DEG / RAD -->
+        <div class="mode-row">
+
+            <button id="degBtn" class="mode active">
+                DEG
+            </button>
+
+            <button id="radBtn" class="mode">
+                RAD
+            </button>
+
+            <button id="memoryIndicator" class="memory-indicator">
+                M
+            </button>
+
+        </div>
+
+
+        <!-- SCIENTIFIC BUTTONS -->
+        <section class="scientific-grid">
+
+            <button class="function" data-action="sin">sin</button>
+            <button class="function" data-action="cos">cos</button>
+            <button class="function" data-action="tan">tan</button>
+
+            <button class="function" data-action="asin">
+                sin⁻¹
+            </button>
+
+            <button class="function" data-action="acos">
+                cos⁻¹
+            </button>
+
+            <button class="function" data-action="atan">
+                tan⁻¹
+            </button>
+
+
+            <button class="function" data-action="log">
+                log
+            </button>
+
+            <button class="function" data-action="ln">
+                ln
+            </button>
+
+            <button class="function" data-action="sqrt">
+                √
+            </button>
+
+            <button class="function" data-action="square">
+                x²
+            </button>
+
+            <button class="function" data-action="power">
+                xʸ
+            </button>
+
+            <button class="function" data-action="factorial">
+                x!
+            </button>
+
+
+            <button class="function" data-action="pi">
+                π
+            </button>
+
+            <button class="function" data-action="e">
+                e
+            </button>
+
+            <button class="function" data-action="open">
+                (
+            </button>
+
+            <button class="function" data-action="close">
+                )
+            </button>
+
+            <button class="function" data-action="exp">
+                EXP
+            </button>
+
+            <button class="function" data-action="ans">
+                ANS
+            </button>
+
+        </section>
+
+
+        <!-- MAIN KEYPAD -->
+        <section class="keypad">
+
+            <button class="utility" data-action="clear">
+                AC
+            </button>
+
+            <button class="utility" data-action="delete">
+                DEL
+            </button>
+
+            <button class="utility" data-action="percent">
+                %
+            </button>
+
+            <button class="operator" data-value="÷">
+                ÷
+            </button>
+
+
+            <button class="number" data-value="7">7</button>
+            <button class="number" data-value="8">8</button>
+            <button class="number" data-value="9">9</button>
+
+            <button class="operator" data-value="×">
+                ×
+            </button>
+
+
+            <button class="number" data-value="4">4</button>
+            <button class="number" data-value="5">5</button>
+            <button class="number" data-value="6">6</button>
+
+            <button class="operator" data-value="−">
+                −
+            </button>
+
+
+            <button class="number" data-value="1">1</button>
+            <button class="number" data-value="2">2</button>
+            <button class="number" data-value="3">3</button>
+
+            <button class="operator" data-value="+">
+                +
+            </button>
+
+
+            <button class="number zero" data-value="0">
+                0
+            </button>
+
+            <button class="number" data-value=".">
+                .
+            </button>
+
+            <button class="equals" data-action="calculate">
+                =
+            </button>
+
+        </section>
+
+
+        <!-- MEMORY -->
+        <section class="memory-row">
+
+            <button data-action="mc">MC</button>
+            <button data-action="mr">MR</button>
+            <button data-action="mplus">M+</button>
+            <button data-action="mminus">M−</button>
+
+        </section>
+
+
+        <!-- FOOTER -->
+        <footer>
+            Made by <em>Muhammad Ahmad</em>
+        </footer>
+
+    </main>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>

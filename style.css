@@ -1,0 +1,788 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --black: #050505;
+    --black-2: #0b0b0b;
+    --black-3: #111111;
+
+    --gold: #d4af37;
+    --gold-light: #f5d76e;
+    --gold-dark: #9d7d19;
+
+    --white: #ffffff;
+    --muted: #9a9a9a;
+
+    --border: rgba(212, 175, 55, 0.25);
+}
+
+
+/* =========================
+   BODY
+========================= */
+
+body {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 30px 15px;
+
+    font-family:
+        Inter,
+        Arial,
+        sans-serif;
+
+    color: var(--white);
+
+    background:
+        radial-gradient(
+            circle at 10% 10%,
+            rgba(212, 175, 55, 0.10),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 90% 90%,
+            rgba(212, 175, 55, 0.07),
+            transparent 30%
+        ),
+        #000000;
+}
+
+
+/* =========================
+   CALCULATOR
+========================= */
+
+.calculator {
+
+    width: min(100%, 500px);
+
+    padding: 26px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #111111,
+            #070707
+        );
+
+    border: 1px solid var(--border);
+
+    border-radius: 26px;
+
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.8),
+        0 0 45px rgba(212, 175, 55, 0.05);
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+
+/* Gold top line */
+
+.calculator::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 12%;
+
+    width: 76%;
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--gold),
+            transparent
+        );
+
+    opacity: 0.8;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 22px;
+}
+
+
+.project {
+
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: var(--gold);
+
+    font-size: 10px;
+
+    letter-spacing: 4px;
+
+    font-weight: 700;
+}
+
+
+h1 {
+
+    font-size: 23px;
+
+    line-height: 1;
+
+    color: var(--white);
+
+    letter-spacing: -0.5px;
+}
+
+
+/* =========================
+   STATUS
+========================= */
+
+.status {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 7px 13px;
+
+    border: 1px solid
+        rgba(212, 175, 55, 0.25);
+
+    border-radius: 50px;
+
+    color: #d0d0d0;
+
+    font-size: 11px;
+
+    background: rgba(255,255,255,0.02);
+}
+
+
+.status span {
+
+    width: 6px;
+
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: var(--gold-light);
+
+    box-shadow:
+        0 0 8px var(--gold);
+
+}
+
+
+/* =========================
+   DISPLAY
+========================= */
+
+.display-box {
+
+    min-height: 145px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: flex-end;
+
+    padding: 22px 24px;
+
+    margin-bottom: 12px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #080808,
+            #030303
+        );
+
+    border: 1px solid
+        rgba(212, 175, 55, 0.16);
+
+    border-radius: 20px;
+
+    box-shadow:
+        inset 0 0 30px rgba(0,0,0,0.5);
+
+    overflow: hidden;
+}
+
+
+#expression {
+
+    min-height: 20px;
+
+    text-align: right;
+
+    color: #777777;
+
+    font-size: 13px;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+
+#display {
+
+    margin-top: 5px;
+
+    text-align: right;
+
+    color: var(--white);
+
+    font-size:
+        clamp(36px, 6vw, 52px);
+
+    font-weight: 700;
+
+    letter-spacing: -1px;
+
+    white-space: nowrap;
+
+    overflow-x: auto;
+
+    scrollbar-width: none;
+
+    text-shadow:
+        0 0 18px rgba(255,255,255,0.08);
+}
+
+
+#display::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* =========================
+   DEG / RAD
+========================= */
+
+.mode-row {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr auto;
+
+    gap: 8px;
+
+    margin-bottom: 10px;
+}
+
+
+.mode,
+.memory-indicator {
+
+    padding: 9px;
+
+    border-radius: 10px;
+
+    border: 1px solid
+        rgba(212,175,55,0.14);
+
+    background: #101010;
+
+    color: #777777;
+
+    cursor: pointer;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    transition: 0.2s ease;
+}
+
+
+.mode:hover,
+.memory-indicator:hover {
+
+    border-color:
+        rgba(212,175,55,0.35);
+
+    color: var(--gold-light);
+}
+
+
+.mode.active {
+
+    background:
+        linear-gradient(
+            135deg,
+            #292000,
+            #171300
+        );
+
+    color: var(--gold-light);
+
+    border-color:
+        rgba(212,175,55,0.45);
+
+    box-shadow:
+        0 0 15px
+        rgba(212,175,55,0.07);
+}
+
+
+.memory-indicator {
+
+    min-width: 50px;
+}
+
+
+.memory-indicator.has-memory {
+
+    color: var(--gold-light);
+
+    border-color: var(--gold-dark);
+}
+
+
+/* =========================
+   SCIENTIFIC GRID
+========================= */
+
+.scientific-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(6, 1fr);
+
+    gap: 9px;
+
+    margin-bottom: 9px;
+}
+
+
+/* =========================
+   MAIN KEYPAD
+========================= */
+
+.keypad {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 9px;
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+button {
+
+    font-family: inherit;
+
+    border: none;
+
+    cursor: pointer;
+
+    user-select: none;
+
+    transition:
+        transform 0.12s ease,
+        background 0.2s ease,
+        border 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.keypad button,
+.scientific-grid button {
+
+    min-height: 58px;
+
+    border-radius: 14px;
+
+    border: 1px solid
+        rgba(255,255,255,0.06);
+
+    background:
+        linear-gradient(
+            145deg,
+            #181818,
+            #0f0f0f
+        );
+
+    color: var(--white);
+
+    font-size: 15px;
+
+    font-weight: 700;
+}
+
+
+.keypad button:hover,
+.scientific-grid button:hover {
+
+    background:
+        linear-gradient(
+            145deg,
+            #242424,
+            #151515
+        );
+
+    border-color:
+        rgba(212,175,55,0.22);
+
+    box-shadow:
+        0 5px 18px
+        rgba(0,0,0,0.5);
+}
+
+
+.keypad button:active,
+.scientific-grid button:active {
+
+    transform: scale(0.95);
+}
+
+
+/* =========================
+   SCIENTIFIC BUTTONS
+========================= */
+
+.function {
+
+    background:
+        linear-gradient(
+            145deg,
+            #151515,
+            #0c0c0c
+        ) !important;
+
+    color: #d2d2d2 !important;
+
+    font-size: 13px !important;
+}
+
+
+.function:hover {
+
+    color: var(--gold-light) !important;
+
+    border-color:
+        rgba(212,175,55,0.3) !important;
+}
+
+
+/* =========================
+   UTILITY BUTTONS
+========================= */
+
+.utility {
+
+    color: #cfcfcf !important;
+}
+
+
+/* =========================
+   OPERATORS
+========================= */
+
+.operator {
+
+    background:
+        linear-gradient(
+            145deg,
+            #292929,
+            #191919
+        ) !important;
+
+    color: var(--gold-light) !important;
+
+    border-color:
+        rgba(212,175,55,0.18) !important;
+
+    font-size: 20px !important;
+}
+
+
+.operator:hover {
+
+    background:
+        linear-gradient(
+            145deg,
+            #3a321c,
+            #211c0d
+        ) !important;
+
+    color: var(--gold-light) !important;
+
+    box-shadow:
+        0 0 18px
+        rgba(212,175,55,0.08);
+}
+
+
+/* =========================
+   EQUAL BUTTON
+========================= */
+
+.equals {
+
+    background:
+        linear-gradient(
+            145deg,
+            #f7df82,
+            #d4af37
+        ) !important;
+
+    color: #090909 !important;
+
+    font-size: 22px !important;
+
+    font-weight: 900 !important;
+
+    border: 1px solid
+        rgba(255,255,255,0.4) !important;
+
+    box-shadow:
+        0 8px 25px
+        rgba(212,175,55,0.18);
+}
+
+
+.equals:hover {
+
+    background:
+        linear-gradient(
+            145deg,
+            #fff0a6,
+            #e2c04b
+        ) !important;
+
+    color: #000000 !important;
+
+    box-shadow:
+        0 10px 30px
+        rgba(212,175,55,0.3);
+}
+
+
+/* =========================
+   ZERO
+========================= */
+
+.zero {
+
+    grid-column: span 2;
+}
+
+
+/* =========================
+   MEMORY
+========================= */
+
+.memory-row {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 9px;
+
+    margin-top: 9px;
+}
+
+
+.memory-row button {
+
+    min-height: 36px;
+
+    border-radius: 10px;
+
+    background: #0e0e0e;
+
+    border: 1px solid
+        rgba(212,175,55,0.10);
+
+    color: #777777;
+
+    font-size: 10px;
+
+    font-weight: 800;
+}
+
+
+.memory-row button:hover {
+
+    color: var(--gold-light);
+
+    background: #171717;
+
+    border-color:
+        rgba(212,175,55,0.25);
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+
+    margin-top: 18px;
+
+    padding-top: 16px;
+
+    border-top:
+        1px solid
+        rgba(212,175,55,0.12);
+
+    text-align: center;
+
+    color: #606060;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+}
+
+
+footer em {
+
+    color: var(--gold-light);
+
+    font-weight: lighter;
+
+    text-shadow:
+        0 0 10px
+        rgba(212,175,55,0.2);
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 620px) {
+
+    .calculator {
+
+        padding: 20px 16px;
+
+        border-radius: 21px;
+    }
+
+
+    .scientific-grid {
+
+        gap: 6px;
+    }
+
+
+    .keypad {
+
+        gap: 6px;
+    }
+
+
+    .keypad button,
+    .scientific-grid button {
+
+        min-height: 50px;
+
+        border-radius: 11px;
+
+        font-size: 13px;
+    }
+
+
+    .function {
+
+        font-size: 11px !important;
+    }
+
+
+    .display-box {
+
+        min-height: 125px;
+
+        padding: 18px;
+    }
+
+}
+
+
+@media (max-width: 430px) {
+
+    body {
+
+        padding: 10px 7px;
+    }
+
+
+    .calculator {
+
+        padding: 16px 10px;
+    }
+
+
+    .scientific-grid,
+    .keypad {
+
+        gap: 5px;
+    }
+
+
+    .keypad button,
+    .scientific-grid button {
+
+        min-height: 45px;
+
+        border-radius: 9px;
+    }
+
+
+    h1 {
+
+        font-size: 20px;
+    }
+
+
+    .status {
+
+        padding: 6px 8px;
+
+    }
+
+}
